@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <title>Document</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <script>
+    window.onload = $(document).ready(function(){
+   var email =  $("#n1").val();
+   var senha =  $("#n2").val();
+               $.ajax({
+                  url: "../teste.php",
+                  type: "POST",
+                  data: "email="+email+"&senha="+senha,
+               dataType: "html"
+       }).done(function(resposta) {
+           if (resposta == "<h1>Voce nao pode acessar.</h1><p><a href=\"../index.html\">Entrar</a></p>") {
+               $("#protect").html(resposta);
+           } else {
+               $("#di").html(resposta);
+           }
+       }).fail(function(jqXHR, textStatus ) {
+           console.log("Request failed: " + textStatus);
+       }).always(function() {
+           console.log("Foi");
+     });
+     var email =  $("#n1").val();
+   var senha =  $("#n2").val();
+               $.ajax({
+                  url: "exib_comenta.php",
+                  type: "POST",
+                  data: "email="+email+"&senha="+senha,
+               dataType: "html"
+       }).done(function(resposta) {
+           $("#tex").html(resposta);
+       }).fail(function(jqXHR, textStatus ) {
+           console.log("Request failed: " + textStatus);
+       }).always(function() {
+           console.log("Foi");
+     });
+   });
+   $(document).ready(function(){
+   $("#come").click(function(){
+   var n1 =  $("#n1").val();
+         $.ajax({
+            url: "comente.php",
+            type: "POST",
+            data: "n1="+n1,
+           dataType: "html"
+     }).done(function(resposta) {
+         $("#tex").html(resposta);
+     }).fail(function(jqXHR, textStatus ) {
+         console.log("Request failed: " + textStatus);
+     }).always(function() {
+         console.log("Foi");
+         });
+         })
+   })
+ </script>
+ </script>
+  <link rel="icon" href="imag/images.jpg">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <script src="js/teste8.js"></script>
+</head>
+<body>
+  <div id="protect">
+  <div id="menu">
+    <div class="conteiner-fluid;"  style="right: 40%; position: absolute;">
+      <ul class="nav nav-tabs" style="background-color: black; font-size: white;">
+        <li><a href="../teste.html">HOME</a></li>
+        <li><a href="../menu1.html">PRODUTOS</a></li>
+        <li><a href="../menu2.html">ORÇAMENTO</a></li>
+        <li><a href="../menu3.html">CONTATOS</a></li>
+        <li><a href="../menu4.html">SOBRE</a></li>
+      </ul>
+      <h1>Bem vindo</h1>
+    <div id="di"></div>
+            <p>
+              <a href="../sair.php">Sair</a>
+          </p>
+    </div>
+  </div>
+    <div style="top: 40px; right: 0px; position: absolute;">
+<div class="container">
+  <div class="panel-group">
+    <div class="panel panel-primary">
+      <div class="panel-heading" onmouseenter="iFunction()" onmouseout="is()">
+        com muitas utilidades
+    </div>
+      <div class="panel-body" onmouseenter="iFunction()" onmouseout="is()">
+        uma das gramdes invenções do homem    
+    </div>
+    </div>
+  </div> 
+</div>
+</div>
+<table border="1px">
+    <tr>
+      <td>
+        <div style="top: 40px; left: 0px; position: absolute;">
+         <img class="img-thumbnail" src="imag/faca.jpg" alt="" style="width:190px;height:150px;" id="myImg" onmouseenter="iFunction()" onmouseout="is()">
+        </div>
+     </td>
+    </tr>
+   </table>
+   <div style="top: 130px; left: 590px; position: absolute;">
+    <h1><div>R$ 45.00</div></h1>
+</div>
+<div style="top: 250px; left: 330px; position: absolute;">
+Quantidade:<input type="number" placeholder="numero de unidades" name="a" id="a">
+<div style="top: 0px; left: 300px; position: relative;" id="re"></div> 
+<div style="top: 0px; left: 300px; position: relative;" id="ree"></div> 
+</div>
+<div class="button-primary" style="top: 280px; left: 410px; position: absolute;">
+    <button onclick="aFunction()" id="b"><img src="imag\b.png" alt="" style="width:100px;height:30px;"></button>
+</div>
+<div style="top: 280px; right: 0; position: absolute;">
+    <img src="imag\car.jpg" alt="" style="width:250px;height:120px;" onmouseenter="cart()" onmouseout="is()">
+</div>
+<div class="container"  style="top: 330px; position: absolute;">
+    <ul class="nav nav-tabs">
+      <li class="active"><a data-toggle="tab" href="#home">Descrição</a></li>
+      <li><a data-toggle="tab" href="#videos">Videos</a></li>
+      <li><a data-toggle="tab" href="#fotos">Fotos</a></li>
+      <li><a data-toggle="tab" href="#menu3">Comentarios</a></li>
+    </ul>
+    <div class="tab-content">
+      <div id="home" class="tab-pane fade in active">
+         faca ideal para sobrevivencia a qualquer situação, de estar perdido na mata ate uma invasão de qualquer coisa
+      </div>
+      <div id="videos" class="tab-pane fade">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/SL8En6bWW_0?si=CyEzziro6Jy0KsRL" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      </div>
+      <div id="fotos" class="tab-pane fade" style="align-items: center; position: absolute;">
+        <img class="img-thumbnail ; img-responsive" src="imag/faca.jpg" alt="">
+      </div>
+      <div id="menu3" class="tab-pane fade">
+        <textarea name="n1" id="n1" cols="60" rows="5" placeholder="comente:"></textarea>
+        <button id="come">ok</button>
+        <div id="tex"></div>
+      </div>
+    </div>
+  </div>
+  </div>
+</body>
+</html>

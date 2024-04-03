@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+    <link rel="icon" href="imag/images.jpg">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+         $("button").click(function(){
+         var nome =  $("#n1").val();
+         var nome_user =  $("#n2").val();
+         var email =  $("#n3").val();
+         var senha =  $("#n4").val();
+                $.ajax({
+                   url: "cadastro.php",
+                   type: "POST",
+                   data: "nome="+nome+"&nome_user="+nome_user+"&email="+email+"&senha="+senha,
+                dataType: "html"
+        }).done(function(resposta) {
+            $("div").html(resposta);
+        }).fail(function(jqXHR, textStatus ) {
+            console.log("Request failed: " + textStatus);
+        }).always(function() {
+            console.log("Foi");
+      });
+      })
+    })
+    </script>
+</head>
+<body>
+    <center>
+    <p>
+        Nome: <input type="text" name="" id="n1" placeholder="Nome completo" required>
+    </p>
+    <p>
+        Nome de usuario: <input type="text" name="" id="n2" placeholder="Nome de usuário">
+    </p>
+    <p>
+        Email: <input type="email" name="" id="n3" placeholder="Email" required>
+    </p>
+    <p>
+        Senha: <input type="password" name="" id="n4" placeholder="Senha" required>
+    </p>
+    <button>Se-Cadastrar</button><br><br> <a href="login.html"><button>logar</button></a>
+    <div></div>
+</center>
+<div class="gtranslate_wrapper"></div>
+    <script>window.gtranslateSettings = {"default_language":"en","native_language_names":true,"wrapper_selector":".gtranslate_wrapper","flag_style":"3d","alt_flags":{"pt":"brazil"}}</script>
+    <script src="https://cdn.gtranslate.net/widgets/latest/float.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="icon" href="imag/images.jpg">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+         $("button").click(function(){
+         var email_ou_nome_user =  $("#n1").val();
+         var senha =  $("#n2").val();
+                $.ajax({
+                   url: "login.php",
+                   type: "POST",
+                   data: "email_ou_nome_user="+email_ou_nome_user+"&senha="+senha,
+                dataType: "html"
+        }).done(function(resposta) {
+                $("div").html(resposta);
+        }).fail(function(jqXHR, textStatus ) {
+            console.log("Request failed: " + textStatus);
+        }).always(function() {
+            console.log("Foi");
+      });
+      })
+    })
+    </script>
+</head>
+<body>
+    <center>
+    <p>
+        Email ou Nome de usuario: <input type="text" name="" id="n1" required>
+    </p>
+    <p>
+        Senha: <input type="password" name="" id="n2" required>
+    </p>
+    <button>Entrar</button><br><br> <a href="inicial.html"><button>Se-Cadastrar</button></a>
+    <div></div>
+</center>
+<div class="gtranslate_wrapper"></div>
+    <script>window.gtranslateSettings = {"default_language":"en","native_language_names":true,"wrapper_selector":".gtranslate_wrapper","flag_style":"3d","alt_flags":{"pt":"brazil"}}</script>
+    <script src="https://cdn.gtranslate.net/widgets/latest/float.js" defer></script>
+</body>
+</html>
